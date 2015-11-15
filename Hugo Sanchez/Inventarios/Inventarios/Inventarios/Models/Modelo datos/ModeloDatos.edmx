@@ -1,0 +1,683 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="InventariosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="GUIDEmpresa" />
+          </Key>
+          <Property Name="GUIDEmpresa" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Clave" Type="varchar(max)" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="EmpresasParaUsuarios">
+          <Key>
+            <PropertyRef Name="GUIDEmpresaParaUsuario" />
+          </Key>
+          <Property Name="GUIDEmpresaParaUsuario" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDEmpresa" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDUsuario" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="GUIDModulo" />
+          </Key>
+          <Property Name="GUIDModulo" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="GUIDPermiso" />
+          </Key>
+          <Property Name="GUIDPermiso" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar(max)" />
+          <Property Name="GUIDModulo" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PermisosParaRoles">
+          <Key>
+            <PropertyRef Name="GUIDPermisoParaRol" />
+          </Key>
+          <Property Name="GUIDPermisoParaRol" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDPermiso" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDRol" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="GUIDRol" />
+          </Key>
+          <Property Name="GUIDRol" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Observaciones" Type="varchar(max)" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="GUIDUsuario" />
+          </Key>
+          <Property Name="GUIDUsuario" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Nombre" Type="varchar(max)" Nullable="false" />
+          <Property Name="Clave" Type="varchar(max)" Nullable="false" />
+          <Property Name="Pass" Type="varchar(max)" Nullable="false" />
+          <Property Name="Correo" Type="varchar(max)" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UsuariosParaRoles">
+          <Key>
+            <PropertyRef Name="GUIDRolParaUsuario" />
+          </Key>
+          <Property Name="GUIDRolParaUsuario" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDRol" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="GUIDUsuario" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Activo" Type="bit" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaAlta" Type="datetime" Nullable="false" />
+          <Property Name="GUIDUsuarioCambio" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="FechaCambio" Type="datetime" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_EPU_EMP">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmpresasParaUsuarios" Type="Self.EmpresasParaUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="GUIDEmpresa" />
+            </Principal>
+            <Dependent Role="EmpresasParaUsuarios">
+              <PropertyRef Name="GUIDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EPU_USU">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmpresasParaUsuarios" Type="Self.EmpresasParaUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Principal>
+            <Dependent Role="EmpresasParaUsuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PER_MOD">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="GUIDModulo" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="GUIDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPR_PER">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermisosParaRoles" Type="Self.PermisosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="GUIDPermiso" />
+            </Principal>
+            <Dependent Role="PermisosParaRoles">
+              <PropertyRef Name="GUIDPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPR_ROL">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermisosParaRoles" Type="Self.PermisosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="GUIDRol" />
+            </Principal>
+            <Dependent Role="PermisosParaRoles">
+              <PropertyRef Name="GUIDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UPR_Rol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuariosParaRoles" Type="Self.UsuariosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="GUIDRol" />
+            </Principal>
+            <Dependent Role="UsuariosParaRoles">
+              <PropertyRef Name="GUIDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UPR_Usu">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosParaRoles" Type="Self.UsuariosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Principal>
+            <Dependent Role="UsuariosParaRoles">
+              <PropertyRef Name="GUIDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InventariosModelStoreContainer">
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EmpresasParaUsuarios" EntityType="Self.EmpresasParaUsuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PermisosParaRoles" EntityType="Self.PermisosParaRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UsuariosParaRoles" EntityType="Self.UsuariosParaRoles" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_EPU_EMP" Association="Self.FK_EPU_EMP">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EmpresasParaUsuarios" EntitySet="EmpresasParaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EPU_USU" Association="Self.FK_EPU_USU">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="EmpresasParaUsuarios" EntitySet="EmpresasParaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PER_MOD" Association="Self.FK_PER_MOD">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPR_PER" Association="Self.FK_PPR_PER">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="PermisosParaRoles" EntitySet="PermisosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPR_ROL" Association="Self.FK_PPR_ROL">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="PermisosParaRoles" EntitySet="PermisosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPR_Rol" Association="Self.FK_UPR_Rol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsuariosParaRoles" EntitySet="UsuariosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPR_Usu" Association="Self.FK_UPR_Usu">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosParaRoles" EntitySet="UsuariosParaRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="InventariosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Empresas">
+          <Key>
+            <PropertyRef Name="GUIDEmpresa" />
+          </Key>
+          <Property Name="GUIDEmpresa" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EmpresasParaUsuarios" Relationship="Self.FK_EPU_EMP" FromRole="Empresas" ToRole="EmpresasParaUsuarios" />
+        </EntityType>
+        <EntityType Name="EmpresasParaUsuarios">
+          <Key>
+            <PropertyRef Name="GUIDEmpresaParaUsuario" />
+          </Key>
+          <Property Name="GUIDEmpresaParaUsuario" Type="Guid" Nullable="false" />
+          <Property Name="GUIDEmpresa" Type="Guid" Nullable="false" />
+          <Property Name="GUIDUsuario" Type="Guid" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Empresas" Relationship="Self.FK_EPU_EMP" FromRole="EmpresasParaUsuarios" ToRole="Empresas" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_EPU_USU" FromRole="EmpresasParaUsuarios" ToRole="Usuarios" />
+        </EntityType>
+        <EntityType Name="Modulos">
+          <Key>
+            <PropertyRef Name="GUIDModulo" />
+          </Key>
+          <Property Name="GUIDModulo" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_PER_MOD" FromRole="Modulos" ToRole="Permisos" />
+        </EntityType>
+        <EntityType Name="Permisos">
+          <Key>
+            <PropertyRef Name="GUIDPermiso" />
+          </Key>
+          <Property Name="GUIDPermiso" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GUIDModulo" Type="Guid" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Modulos" Relationship="Self.FK_PER_MOD" FromRole="Permisos" ToRole="Modulos" />
+          <NavigationProperty Name="PermisosParaRoles" Relationship="Self.FK_PPR_PER" FromRole="Permisos" ToRole="PermisosParaRoles" />
+        </EntityType>
+        <EntityType Name="PermisosParaRoles">
+          <Key>
+            <PropertyRef Name="GUIDPermisoParaRol" />
+          </Key>
+          <Property Name="GUIDPermisoParaRol" Type="Guid" Nullable="false" />
+          <Property Name="GUIDPermiso" Type="Guid" Nullable="false" />
+          <Property Name="GUIDRol" Type="Guid" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Permisos" Relationship="Self.FK_PPR_PER" FromRole="PermisosParaRoles" ToRole="Permisos" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_PPR_ROL" FromRole="PermisosParaRoles" ToRole="Roles" />
+        </EntityType>
+        <EntityType Name="Roles">
+          <Key>
+            <PropertyRef Name="GUIDRol" />
+          </Key>
+          <Property Name="GUIDRol" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Observaciones" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="PermisosParaRoles" Relationship="Self.FK_PPR_ROL" FromRole="Roles" ToRole="PermisosParaRoles" />
+          <NavigationProperty Name="UsuariosParaRoles" Relationship="Self.FK_UPR_Rol" FromRole="Roles" ToRole="UsuariosParaRoles" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Usuarios">
+          <Key>
+            <PropertyRef Name="GUIDUsuario" />
+          </Key>
+          <Property Name="GUIDUsuario" Type="Guid" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Clave" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Pass" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Correo" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="EmpresasParaUsuarios" Relationship="Self.FK_EPU_USU" FromRole="Usuarios" ToRole="EmpresasParaUsuarios" />
+          <NavigationProperty Name="UsuariosParaRoles" Relationship="Self.FK_UPR_Usu" FromRole="Usuarios" ToRole="UsuariosParaRoles" />
+        </EntityType>
+        <EntityType Name="UsuariosParaRoles">
+          <Key>
+            <PropertyRef Name="GUIDRolParaUsuario" />
+          </Key>
+          <Property Name="GUIDRolParaUsuario" Type="Guid" Nullable="false" />
+          <Property Name="GUIDRol" Type="Guid" Nullable="false" />
+          <Property Name="GUIDUsuario" Type="Guid" Nullable="false" />
+          <Property Name="Activo" Type="Boolean" Nullable="false" />
+          <Property Name="GUIDUsuarioAlta" Type="Guid" Nullable="false" />
+          <Property Name="FechaAlta" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="GUIDUsuarioCambio" Type="Guid" Nullable="false" />
+          <Property Name="FechaCambio" Type="DateTime" Nullable="false" Precision="3" />
+          <NavigationProperty Name="Roles" Relationship="Self.FK_UPR_Rol" FromRole="UsuariosParaRoles" ToRole="Roles" />
+          <NavigationProperty Name="Usuarios" Relationship="Self.FK_UPR_Usu" FromRole="UsuariosParaRoles" ToRole="Usuarios" />
+        </EntityType>
+        <Association Name="FK_EPU_EMP">
+          <End Role="Empresas" Type="Self.Empresas" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmpresasParaUsuarios" Type="Self.EmpresasParaUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Empresas">
+              <PropertyRef Name="GUIDEmpresa" />
+            </Principal>
+            <Dependent Role="EmpresasParaUsuarios">
+              <PropertyRef Name="GUIDEmpresa" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_EPU_USU">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="EmpresasParaUsuarios" Type="Self.EmpresasParaUsuarios" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Principal>
+            <Dependent Role="EmpresasParaUsuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PER_MOD">
+          <End Role="Modulos" Type="Self.Modulos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Modulos">
+              <PropertyRef Name="GUIDModulo" />
+            </Principal>
+            <Dependent Role="Permisos">
+              <PropertyRef Name="GUIDModulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPR_PER">
+          <End Role="Permisos" Type="Self.Permisos" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermisosParaRoles" Type="Self.PermisosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Permisos">
+              <PropertyRef Name="GUIDPermiso" />
+            </Principal>
+            <Dependent Role="PermisosParaRoles">
+              <PropertyRef Name="GUIDPermiso" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_PPR_ROL">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="PermisosParaRoles" Type="Self.PermisosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="GUIDRol" />
+            </Principal>
+            <Dependent Role="PermisosParaRoles">
+              <PropertyRef Name="GUIDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UPR_Rol">
+          <End Role="Roles" Type="Self.Roles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="UsuariosParaRoles" Type="Self.UsuariosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Roles">
+              <PropertyRef Name="GUIDRol" />
+            </Principal>
+            <Dependent Role="UsuariosParaRoles">
+              <PropertyRef Name="GUIDRol" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_UPR_Usu">
+          <End Role="Usuarios" Type="Self.Usuarios" Multiplicity="1" />
+          <End Role="UsuariosParaRoles" Type="Self.UsuariosParaRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Usuarios">
+              <PropertyRef Name="GUIDUsuario" />
+            </Principal>
+            <Dependent Role="UsuariosParaRoles">
+              <PropertyRef Name="GUIDUsuario" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="InventariosEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Empresas" EntityType="Self.Empresas" />
+          <EntitySet Name="EmpresasParaUsuarios" EntityType="Self.EmpresasParaUsuarios" />
+          <EntitySet Name="Modulos" EntityType="Self.Modulos" />
+          <EntitySet Name="Permisos" EntityType="Self.Permisos" />
+          <EntitySet Name="PermisosParaRoles" EntityType="Self.PermisosParaRoles" />
+          <EntitySet Name="Roles" EntityType="Self.Roles" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Usuarios" EntityType="Self.Usuarios" />
+          <EntitySet Name="UsuariosParaRoles" EntityType="Self.UsuariosParaRoles" />
+          <AssociationSet Name="FK_EPU_EMP" Association="Self.FK_EPU_EMP">
+            <End Role="Empresas" EntitySet="Empresas" />
+            <End Role="EmpresasParaUsuarios" EntitySet="EmpresasParaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_EPU_USU" Association="Self.FK_EPU_USU">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="EmpresasParaUsuarios" EntitySet="EmpresasParaUsuarios" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PER_MOD" Association="Self.FK_PER_MOD">
+            <End Role="Modulos" EntitySet="Modulos" />
+            <End Role="Permisos" EntitySet="Permisos" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPR_PER" Association="Self.FK_PPR_PER">
+            <End Role="Permisos" EntitySet="Permisos" />
+            <End Role="PermisosParaRoles" EntitySet="PermisosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_PPR_ROL" Association="Self.FK_PPR_ROL">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="PermisosParaRoles" EntitySet="PermisosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPR_Rol" Association="Self.FK_UPR_Rol">
+            <End Role="Roles" EntitySet="Roles" />
+            <End Role="UsuariosParaRoles" EntitySet="UsuariosParaRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_UPR_Usu" Association="Self.FK_UPR_Usu">
+            <End Role="Usuarios" EntitySet="Usuarios" />
+            <End Role="UsuariosParaRoles" EntitySet="UsuariosParaRoles" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="InventariosModelStoreContainer" CdmEntityContainer="InventariosEntities">
+          <EntitySetMapping Name="Empresas">
+            <EntityTypeMapping TypeName="InventariosModel.Empresas">
+              <MappingFragment StoreEntitySet="Empresas">
+                <ScalarProperty Name="GUIDEmpresa" ColumnName="GUIDEmpresa" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EmpresasParaUsuarios">
+            <EntityTypeMapping TypeName="InventariosModel.EmpresasParaUsuarios">
+              <MappingFragment StoreEntitySet="EmpresasParaUsuarios">
+                <ScalarProperty Name="GUIDEmpresaParaUsuario" ColumnName="GUIDEmpresaParaUsuario" />
+                <ScalarProperty Name="GUIDEmpresa" ColumnName="GUIDEmpresa" />
+                <ScalarProperty Name="GUIDUsuario" ColumnName="GUIDUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Modulos">
+            <EntityTypeMapping TypeName="InventariosModel.Modulos">
+              <MappingFragment StoreEntitySet="Modulos">
+                <ScalarProperty Name="GUIDModulo" ColumnName="GUIDModulo" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Permisos">
+            <EntityTypeMapping TypeName="InventariosModel.Permisos">
+              <MappingFragment StoreEntitySet="Permisos">
+                <ScalarProperty Name="GUIDPermiso" ColumnName="GUIDPermiso" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="GUIDModulo" ColumnName="GUIDModulo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PermisosParaRoles">
+            <EntityTypeMapping TypeName="InventariosModel.PermisosParaRoles">
+              <MappingFragment StoreEntitySet="PermisosParaRoles">
+                <ScalarProperty Name="GUIDPermisoParaRol" ColumnName="GUIDPermisoParaRol" />
+                <ScalarProperty Name="GUIDPermiso" ColumnName="GUIDPermiso" />
+                <ScalarProperty Name="GUIDRol" ColumnName="GUIDRol" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="InventariosModel.Roles">
+              <MappingFragment StoreEntitySet="Roles">
+                <ScalarProperty Name="GUIDRol" ColumnName="GUIDRol" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="InventariosModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Usuarios">
+            <EntityTypeMapping TypeName="InventariosModel.Usuarios">
+              <MappingFragment StoreEntitySet="Usuarios">
+                <ScalarProperty Name="GUIDUsuario" ColumnName="GUIDUsuario" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Clave" ColumnName="Clave" />
+                <ScalarProperty Name="Pass" ColumnName="Pass" />
+                <ScalarProperty Name="Correo" ColumnName="Correo" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UsuariosParaRoles">
+            <EntityTypeMapping TypeName="InventariosModel.UsuariosParaRoles">
+              <MappingFragment StoreEntitySet="UsuariosParaRoles">
+                <ScalarProperty Name="GUIDRolParaUsuario" ColumnName="GUIDRolParaUsuario" />
+                <ScalarProperty Name="GUIDRol" ColumnName="GUIDRol" />
+                <ScalarProperty Name="GUIDUsuario" ColumnName="GUIDUsuario" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="GUIDUsuarioAlta" ColumnName="GUIDUsuarioAlta" />
+                <ScalarProperty Name="FechaAlta" ColumnName="FechaAlta" />
+                <ScalarProperty Name="GUIDUsuarioCambio" ColumnName="GUIDUsuarioCambio" />
+                <ScalarProperty Name="FechaCambio" ColumnName="FechaCambio" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e05ea03685ae47cb9aaa247d514c76f0" Name="Diagram1">
+        <EntityTypeShape EntityType="InventariosModel.Empresas" Width="1.5" PointX="3.75" PointY="8.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.EmpresasParaUsuarios" Width="1.5" PointX="6" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.Modulos" Width="1.5" PointX="1.5" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.Permisos" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.PermisosParaRoles" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.Roles" Width="1.5" PointX="0.75" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.sysdiagrams" Width="1.5" PointX="5.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.Usuarios" Width="1.5" PointX="3.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="InventariosModel.UsuariosParaRoles" Width="1.5" PointX="6" PointY="5" IsExpanded="true" />
+        <AssociationConnector Association="InventariosModel.FK_EPU_EMP" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_EPU_USU" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_PER_MOD" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_PPR_PER" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_PPR_ROL" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_UPR_Rol" ManuallyRouted="false" />
+        <AssociationConnector Association="InventariosModel.FK_UPR_Usu" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
